@@ -1,0 +1,40 @@
+
+Group 1: Core GET calls 
+-----------------------
+1b. Users: Get list of users sorted by popularity 
+1c. Users: Get list of users sorted by activity 
+1d. Users: Get user data
+2b. Followers: Get list of followers for a maven
+3a. Get list of mavens for a follower
+4b. Get list of recommenedations by a user
+
+Group 2: Core POST calls 
+-----------------------
+2a. Followers: Follow someone 
+4a. Recommendations: Create new recommendation
+
+Group 3: Authentication
+-----------------------
+- User account authentication
+- Error returns
+
+Group 4: Fetch and update Movie DB Info 
+---------------------------------------
+- Calls to external db to fetch info
+- Update our database with required info
+
+Group 5: Error handling
+-----------------------
+- GET Calls on lists
+- GET calls on an item 
+- POST calls on lists
+- PUT calls on an item
+- DELETE calls on an item 
+
+Later: 
+-----
+1a. Users: Create a new user 
+1e. Users: Change user data (password)
+1f. Delete a user
+2c. Unfollow someone
+4c. Delete a recommendation

@@ -1,0 +1,70 @@
+
+Moviefeed feature specification
+
+Moviefeed web service shall provide the following REST API access for native mobile apps and web apps. 
+
+1. Resource: Users (/rest/users)
+
+a. Create a new user (login, password, fullname): HTTP-POST Post-data: <login=, password=, fullname=>
+    - error messages: username invalid, username already exists, password invalid
+
+b. Get list of users sorted by popularity (number of followers): HTTP-GET Query-string <sort=popularity>
+    - error messages: no matching records 
+
+c. Get list of users sorted by activity (number of recommendations): HTTP-GET Query-string <sort=activity>
+    - error messages: no matching records 
+
+d. Get user data (login, fullname): HTTP-GET /users/id 
+    - error messages: user does not exist 
+ 
+e. Change user data (password): HTTP-PUT /users/id Post-data: <password=>
+    - error messages: user does not exist, password invalid 
+
+f. Delete a user:  
+
+2. Resource: Followers (/rest/followers)
+
+a. Follow someone: HTTP-POST Post-data: <maven-id=, follower-id=>
+    - error messages: user does not exist
+
+b. Get list of followers for a maven: HTTP-GET /rest/followers/maven-id
+    - error messages: user does not exist, no matching records 
+
+c. Unfollow someome  
+
+3. Resource: Mavens (/rest/mavens)
+
+a. Get list of mavens for a follower: HTTP-GET /rest/mavens/follower-id
+    - sorted by activity
+    - error messages: no matching records
+
+4. Resource: Recommendations (/rest/recommendations) 
+
+a. Create a new recommendation: HTTP-POST Post-data: <user-id=?, movie-id=?> 
+    - error messages: user does not exist, recommendation duplicate
+
+b. Get list of recommendations by a user: HTTP-GET /rest/recommendatinos/userid 
+    - error messages: user does not exist, no matching records
+
+c. Delete a recommendation:   
+
+Error messages: 
+
+0. authentication failed    (for authentication)
+1. username invalid         (for account creation)
+2. user already exists      (for account creation) 
+3. user does not exist      (for queries that require user) 
+4. password invalid         (when setting password) 
+5. password mis-match       (when setting password)   
+6. fullname invalid         (for account creation)
+7. fullname too long        (for account creation)
+8. no matching records      (for GET on lists)
+9. recommendation duplicate (for new recommendations)
+
+Common spec for all HTTP-GET Calls on lists
+
+1. query string can say <records-from=?> and <records-count=?>. 
+2. if <records-from> is not specified, it starts from the first record 
+3. max limit on <records-count> is 50. Same limit is used if <records-count> is not specified   
+4. if number of records available is less than <records-count>, available records are returned
+

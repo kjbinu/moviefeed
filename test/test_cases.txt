@@ -1,2 +1,27 @@
 
-- testing checkin from Binu's laptop
+
+Find Mavens to Follow:   
+
+#1  Test-description: Get top most active users (i.e. users with most recommendations)
+    Test-case: URL: /rest/users; HTTP-Method: GET; POST-DATA: <Sort-by:Most-Active> <Start-Record:1> <Count:50>
+    Response: Returns 50 most active users starting with top most active user
+
+#2  Test-description: Get users with most followers
+    Test-case: URL: /rest/users; HTTP-Method: GET; POST-DATA: <Sort-by:Most-Followed> <Start-Record:1> <Count:25>
+    Response: Returns 25 most followed users starting with the most followed user
+
+#3  Test-description: Find users by Name (e.g. Binu Johnson)
+    Test-case: URL: /rest/users; HTTP-Method: GET; POST-DATA; 
+    Response: Returns all uses with matching name
+
+#4a Test-description: Find users by Email - User exists
+    Response: Return user with an exact match of Email
+
+#4b Test-description: Find uses by Email - User does not exist
+    Response: 
+
+
+
+ 
+
+
